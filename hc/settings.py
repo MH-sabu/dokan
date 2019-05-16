@@ -31,7 +31,6 @@ ALLOWED_HOSTS = ['178.128.56.243']
 
 SECRET_KEY = '&kb&!=@kg$ig#ex#tyw7*ow%c0=crwnarv1j31ebc678*tj4uc'
 DEBUG = False
-DEBUG_PROPAGATE_EXCEPTIONS = True
 DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL", "healthchecks@example.org")
 SUPPORT_EMAIL = os.getenv("SUPPORT_EMAIL")
 USE_PAYMENTS = envbool("USE_PAYMENTS", "False")
