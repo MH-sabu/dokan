@@ -7,6 +7,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings
 
 import os
 import warnings
+from puput import PUPUT_APPS
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -50,6 +51,8 @@ INSTALLED_APPS = (
     "hc.payments",
 )
 
+INSTALLED_APPS += PUPUT_APPS
+
 MIDDLEWARE = (
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -59,6 +62,9 @@ MIDDLEWARE = (
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "hc.accounts.middleware.TeamAccessMiddleware",
+    'wagtail.core.middleware.SiteMiddleware',
+    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+
 )
 
 AUTHENTICATION_BACKENDS = (
@@ -80,6 +86,8 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "hc.payments.context_processors.payments",
+                'django.template.context_processors.request',
+
             ]
         },
     }
@@ -140,6 +148,7 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+WAGTAIL_SITE_NAME = 'Puput blog'
 
 SITE_ROOT = os.getenv("SITE_ROOT", "http://localhost:8000")
 SITE_NAME = os.getenv("SITE_NAME", "DokanX")
@@ -202,6 +211,9 @@ TRELLO_APP_KEY = os.getenv("TRELLO_APP_KEY")
 MATRIX_HOMESERVER = os.getenv("MATRIX_HOMESERVER")
 MATRIX_USER_ID = os.getenv("MATRIX_USER_ID")
 MATRIX_ACCESS_TOKEN = os.getenv("MATRIX_ACCESS_TOKEN")
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 if os.path.exists(os.path.join(BASE_DIR, "hc/local_settings.py")):
     from .local_settings import *
