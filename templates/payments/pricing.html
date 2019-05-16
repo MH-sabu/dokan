@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% load static compress hc_extras %}
+
+{% block title %}Pricing - It's Free! - {% site_name %}{% endblock %}
+
+{% block description %}
+    <meta name="description" content="With the Free plan, you can monitor up to 20 services for free. Paid plans lift the limits significantly and are reasonably priced. Special offer for open source projects.">
+{% endblock %}
+
+{% block keywords %}
+    <meta name="keywords" content="healthchecks, cronitor alternative, dead man's snitch alternative, monitor cron jobs free, free cron monitoring, free cron job, free health checks">
+{% endblock %}
+
+{% block content %}
+
+<!-- Plans -->
+<section id="plans" {% if request.user.is_authenticated %} data- {% endif %}>
+    <div class="container">
+        {% if request.user.is_authenticated %}
+        <div class="row">
+            <div class="col-md-12">
+                <div id="subscription-status" class="jumbotron">
+                    <p>
+                        {% if sub.plan_id %}
+                            Your account is currently on the
+                            <strong>{{ sub.plan_name }}</strong>
+                            plan. Thank you for supporting {% site_name %}!
+                        {% else %}
+                            Your account is currently on the
+                            <strong>{{ sub.plan_name|default:"Hobbyist" }}</strong> plan.
+                        {% endif  %}
+                    </p>
+                    <p>
+                        {% if sub.plan_id %}
+                        <a class="btn btn-default" href="{% url 'hc-billing' %}">Billing Details</a>
+                        {% else %}
+                        <a class="btn btn-default" href="{% url 'hc-billing' %}">Billing Details and Plan Upgrades</a>
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h1>{% site_name %} Pricing Plans</h1>
+            </div>
+        </div>
+        {% endif %}
+
+        <br>
+
+        <!-- Free -->
+        <div class="col-sm-4 text-center">
+            <div class="panel panel-default">
+                <div class="panel-body text-center free">
+                    <h1>Small Shop</h1>
+                    <h2>$20 or 1500tk<span class="mo">/mo</span></h2>
+                </div>
+                <ul class="list-group text-center">
+                    <li class="list-group-item"><i class="fa fa-check"></i> 200 Product Photo</li>
+                    <li class="list-group-item"><i class="fa fa-check"></i> 1GB RAM</li>
+                    <li class="list-group-item">SSD DISK 25 GB	</li>
+                    <li class="list-group-item">TRANSFER 1T	</li>
+                    
+                </ul>
+                {% if not request.user.is_authenticated %}
+                <div class="panel-footer">
+                    <a href="#" data-toggle="modal" data-target="#signup-modal" class="btn btn-lg btn-success">Get Started</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <!-- /item -->
+
+        <!-- P5 -->
+        <div class="col-sm-4 text-center">
+            <div class="panel panel-default">
+                <div class="panel-body text-center">
+                    <h1>Big Shop</h1>
+                    <h2>
+                        <span id="s-price">$25 or 2000tk</span><span class="mo">/mo</span>
+                    </h2>
+                </div>
+
+                <ul class="list-group text-center">
+                        <li class="list-group-item"><i class="fa fa-check"></i> 6000 Product Photo</li>
+
+                        <li class="list-group-item"><i class="fa fa-check"></i> 2GB RAM</li>
+                        <li class="list-group-item">SSD DISK 50 GB	</li>
+                        <li class="list-group-item">TRANSFER 2T	</li>
+                </ul>
+                {% if not request.user.is_authenticated %}
+                <div class="panel-footer">
+                    <a href="#" data-toggle="modal" data-target="#signup-modal" class="btn btn-lg btn-primary">
+                        Get Started
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <!-- /item -->
+
+        <!-- P50 -->
+        
+    </div>
+</section>
+<!-- /Plans -->
+
+
+
+{% if not request.user.is_authenticated %}
+{% include "front/signup_modal.html" %}
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+{% compress js %}
+<script src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/pricing.js' %}"></script>
+<script src="{% static 'js/signup.js' %}"></script>
+{% endcompress %}
+{% endblock %}
