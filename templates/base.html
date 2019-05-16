@@ -97,7 +97,9 @@
                 <li {% if page == 'pricing' %} class="active" {% endif %}>
                     <a href="{% url 'hc-pricing' %}">Pricing</a>
                 </li>
-
+                <li>
+                    <a href="{% url 'blog' %}">Blog</a>
+                </li>
                 
 
                 {% if request.user.is_authenticated %}
