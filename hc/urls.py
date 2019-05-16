@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import include, path
 from django.conf import settings
 from django.conf.urls import url
+from puput import urls as puput_urls
 
 from hc.accounts import views as accounts_views
 
@@ -12,7 +13,7 @@ urlpatterns = [
     path("", include("hc.api.urls")),
     path("", include("hc.front.urls")),
     path("", include("hc.payments.urls")),
-    path("", include('puput.urls')),
+    path(r'', include('puput.urls')),
 
 ]
 
