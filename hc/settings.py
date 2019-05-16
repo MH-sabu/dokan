@@ -29,7 +29,7 @@ def envint(s, default):
 
 
 SECRET_KEY = os.getenv("SECRET_KEY", "---")
-DEBUG = envbool("DEBUG", "True")
+DEBUG = envbool("DEBUG", "False")
 ALLOWED_HOSTS = ['178.128.56.243']
 DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL", "healthchecks@example.org")
 SUPPORT_EMAIL = os.getenv("SUPPORT_EMAIL")
