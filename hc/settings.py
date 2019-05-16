@@ -212,10 +212,12 @@ MATRIX_HOMESERVER = os.getenv("MATRIX_HOMESERVER")
 MATRIX_USER_ID = os.getenv("MATRIX_USER_ID")
 MATRIX_ACCESS_TOKEN = os.getenv("MATRIX_ACCESS_TOKEN")
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+
 
 if os.path.exists(os.path.join(BASE_DIR, "hc/local_settings.py")):
     from .local_settings import *
 else:
     warnings.warn("local_settings.py not found, using defaults")
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
