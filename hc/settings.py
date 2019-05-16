@@ -61,9 +61,7 @@ MIDDLEWARE = (
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "hc.accounts.middleware.TeamAccessMiddleware",
-    'wagtail.core.middleware.SiteMiddleware',
-    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
-
+    
 )
 
 AUTHENTICATION_BACKENDS = (
@@ -85,7 +83,6 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "hc.payments.context_processors.payments",
-                'django.template.context_processors.request',
 
             ]
         },
@@ -147,7 +144,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-WAGTAIL_SITE_NAME = 'Puput blog'
 
 SITE_ROOT = os.getenv("SITE_ROOT", "http://localhost:8000")
 SITE_NAME = os.getenv("SITE_NAME", "DokanX")
@@ -215,5 +211,3 @@ MATRIX_ACCESS_TOKEN = os.getenv("MATRIX_ACCESS_TOKEN")
 
 
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
