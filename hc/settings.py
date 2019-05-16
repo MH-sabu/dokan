@@ -51,7 +51,6 @@ INSTALLED_APPS = (
     "hc.payments",
 )
 
-INSTALLED_APPS += PUPUT_APPS
 
 MIDDLEWARE = (
     "django.middleware.security.SecurityMiddleware",
