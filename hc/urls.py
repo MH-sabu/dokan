@@ -13,8 +13,8 @@ urlpatterns = [
     path("", include("hc.api.urls")),
     path("", include("hc.front.urls")),
     path("", include("hc.payments.urls")),
-    path(r'',include(puput_urls)),
-]
+    path('', include('puput.urls')),
+    ]
 
 
 
