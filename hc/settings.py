@@ -10,7 +10,7 @@ import warnings
 from puput import PUPUT_APPS
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+PROJECT_ROOT = os.path.normpath(os.path.join(os.path.dirname(__file__), ".."))
 
 def envbool(s, default):
     v = os.getenv(s, default=default)
@@ -149,11 +149,18 @@ SITE_NAME = os.getenv("SITE_NAME", "DokanX")
 MASTER_BADGE_LABEL = os.getenv("MASTER_BADGE_LABEL", SITE_NAME)
 PING_ENDPOINT = os.getenv("PING_ENDPOINT", SITE_ROOT + "/ping/")
 PING_EMAIL_DOMAIN = os.getenv("PING_EMAIL_DOMAIN", "localhost")
-STATIC_URL = "/static/"
-STATIC_ROOT = os.path.join(BASE_DIR, "static/")
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, "media")
+MEDIA_URL = os.environ.get("MEDIA_URL", "/media/")
+
+STATIC_ROOT = os.path.join(PROJECT_ROOT, "static")
+STATIC_URL = os.environ.get("STATIC_URL", "/static/")
+
+STATICFILES_DIRS = [os.path.join(PROJECT_ROOT, "static")]
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
 
 COMPRESS_OFFLINE = True
 COMPRESS_CSS_HASHING_METHOD = "content"
