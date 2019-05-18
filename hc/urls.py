@@ -19,5 +19,4 @@ urlpatterns = [
     path('', include('hc.payments.urls')),
     path(r'', include('puput.urls')),
 
-    ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
+    ]
