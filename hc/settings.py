@@ -217,8 +217,6 @@ MATRIX_HOMESERVER = os.getenv("MATRIX_HOMESERVER")
 MATRIX_USER_ID = os.getenv("MATRIX_USER_ID")
 MATRIX_ACCESS_TOKEN = os.getenv("MATRIX_ACCESS_TOKEN")
 
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
-MEDIA_URL = '/media/'
 
 
 
