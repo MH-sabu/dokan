@@ -159,9 +159,9 @@ MEDIA_ROOT = os.path.join(PROJECT_ROOT, "media")
 MEDIA_URL = os.environ.get("MEDIA_URL", "/media/")
 
 STATIC_ROOT = os.path.join(PROJECT_ROOT, "static")
-STATIC_URL = '/static/'
+STATIC_URL = os.environ.get("STATIC_URL", "/static/")
 
-STATICFILES_DIRS = [os.path.join(PROJECT_ROOT, "static-cdn")]
+STATICFILES_DIRS = [os.path.join(PROJECT_ROOT, "static-collected")]
 
 
 COMPRESS_OFFLINE = True
