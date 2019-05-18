@@ -27,7 +27,7 @@ def envint(s, default):
 
     return int(v)
 
-ALLOWED_HOSTS = ['178.128.56.243']
+ALLOWED_HOSTS = ['178.128.56.243','dokanx.com','www.dokanx.com']
 
 SECRET_KEY = '&kb&!=@kg$ig#ex#tyw7*ow%c0=crwnarv1j31ebc678*tj4uc'
 DEBUG = False
