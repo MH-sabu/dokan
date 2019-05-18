@@ -159,14 +159,10 @@ MEDIA_ROOT = os.path.join(PROJECT_ROOT, "media")
 MEDIA_URL = os.environ.get("MEDIA_URL", "/media/")
 
 STATIC_ROOT = os.path.join(PROJECT_ROOT, "static")
-STATIC_URL = os.environ.get("STATIC_URL", "/static/")
+STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [os.path.join(PROJECT_ROOT, "static-collected")]
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
-)
+STATICFILES_DIRS = [os.path.join(PROJECT_ROOT, "static-cdn")]
+
 
 COMPRESS_OFFLINE = True
 COMPRESS_CSS_HASHING_METHOD = "content"
