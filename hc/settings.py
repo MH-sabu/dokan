@@ -50,6 +50,7 @@ INSTALLED_APPS = (
     "hc.front",
     "hc.payments",
 )
+INSTALLED_APPS += PUPUT_APPS
 
 
 MIDDLEWARE = (
@@ -61,6 +62,8 @@ MIDDLEWARE = (
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "hc.accounts.middleware.TeamAccessMiddleware",
+    'wagtail.core.middleware.SiteMiddleware',
+    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
     
 )
 
@@ -82,6 +85,8 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "hc.payments.context_processors.payments",
+                'django.template.context_processors.request',
+
 
             ]
         },
@@ -90,6 +95,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "hc.wsgi.application"
 TEST_RUNNER = "hc.api.tests.CustomRunner"
+WAGTAIL_SITE_NAME = 'Puput blog'
 
 
 # Default database engine is SQLite. So one can just check out code,
@@ -211,7 +217,8 @@ MATRIX_HOMESERVER = os.getenv("MATRIX_HOMESERVER")
 MATRIX_USER_ID = os.getenv("MATRIX_USER_ID")
 MATRIX_ACCESS_TOKEN = os.getenv("MATRIX_ACCESS_TOKEN")
 
-
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
+MEDIA_URL = '/media/'
 
 
 
