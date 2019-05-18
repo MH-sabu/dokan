@@ -162,7 +162,11 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, "static")
 STATIC_URL = os.environ.get("STATIC_URL", "/static/")
 
 STATICFILES_DIRS = [os.path.join(PROJECT_ROOT, "static-collected")]
-
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
 
 COMPRESS_OFFLINE = True
 COMPRESS_CSS_HASHING_METHOD = "content"
