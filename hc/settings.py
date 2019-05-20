@@ -27,7 +27,7 @@ def envint(s, default):
 
     return int(v)
 
-ALLOWED_HOSTS = ['178.128.56.243','dokanx.com','www.dokanx.com']
+ALLOWED_HOSTS = ['127.0.0.1','178.128.56.243','dokanx.com','www.dokanx.com']
 
 SECRET_KEY = '&kb&!=@kg$ig#ex#tyw7*ow%c0=crwnarv1j31ebc678*tj4uc'
 DEBUG = True
@@ -161,12 +161,14 @@ MEDIA_URL = os.environ.get("MEDIA_URL", "/media/")
 STATIC_ROOT = os.path.join(PROJECT_ROOT, "static")
 STATIC_URL = os.environ.get("STATIC_URL", "/static/")
 
-STATICFILES_DIRS = [("assets", os.path.join(PROJECT_ROOT, "hc", "static"))]
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static-collected')
+
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder',
 )
+
 
 COMPRESS_OFFLINE = True
 COMPRESS_CSS_HASHING_METHOD = "content"
